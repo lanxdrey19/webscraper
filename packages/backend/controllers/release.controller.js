@@ -21,7 +21,7 @@ const getReleases = async (req, res) => {
       .catch((err) => console.log(err));
 
     let colNum = 0;
-    let date = 0;
+    let day = 0;
     let track = "";
     let artist = "";
     let finalArray = [];
@@ -36,8 +36,8 @@ const getReleases = async (req, res) => {
             arrayComebacks[i].info.length - 1
           );
           if (Number.isInteger(parseInt(subStrInfo))) {
-            if (parseInt(subStrInfo) >= date) {
-              date = parseInt(subStrInfo);
+            if (parseInt(subStrInfo) >= day) {
+              day = parseInt(subStrInfo);
               colNum = 1;
             } else {
               thisMonthOnly = false;
@@ -76,7 +76,7 @@ const getReleases = async (req, res) => {
           });
 
           colNum = 0;
-          finalArray.push({ date, track, artist, imgSrc });
+          finalArray.push({ day, track, artist, imgSrc });
         }
       }
     }

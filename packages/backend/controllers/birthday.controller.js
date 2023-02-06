@@ -36,15 +36,15 @@ const getBirthdayMembers = async (req, res) => {
       await axios(arrayInfo[i].link).then((res) => {
         const htmlProfile = res.data;
         const secondPageData = cheerio.load(htmlProfile);
-        const finalInfo = arrayInfo[i].info.substring(
+        const idolName = arrayInfo[i].info.substring(
           5,
           arrayInfo[i].info.length
         );
         secondPageData(".pi-image-thumbnail", htmlProfile).each(function () {
-          const profileImg = secondPageData(this).attr("src");
+          const imgSrc = secondPageData(this).attr("src");
           finalArray.push({
-            finalInfo,
-            profileImg,
+            idolName,
+            imgSrc,
           });
         });
       });
@@ -68,9 +68,9 @@ const getBirthdayDate = async (req, res) => {
           "#mw-content-text > div > div.main-page-tag-rcs > div.rcs-container > p > b",
           html
         ).each(function () {
-          const info = websiteData(this).text();
+          const date = websiteData(this).text();
           //const link = websiteData(this).find("a").attr("href");
-          bdayDate.push({ info });
+          bdayDate.push({ date });
         });
       })
       .catch((err) => console.log(err));
