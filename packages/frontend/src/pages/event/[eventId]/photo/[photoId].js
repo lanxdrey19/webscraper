@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 function Photo() {
   const router = useRouter();
@@ -8,6 +9,7 @@ function Photo() {
       <h1>
         Event - {eventId} Photo - {photoId}
       </h1>
+      <Link href="/">Home</Link>
     </>
   );
 }
