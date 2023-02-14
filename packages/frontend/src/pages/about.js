@@ -1,4 +1,5 @@
 import Link from "next/link";
+import User from "../components/user";
 
 function About({ users }) {
   return (
@@ -10,8 +11,7 @@ function About({ users }) {
       {users.map((user) => {
         return (
           <div key={user.id}>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
+            <User user={user} />
           </div>
         );
       })}
