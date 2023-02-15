@@ -12,6 +12,7 @@ function Home() {
     <>
       <h1>Home Page</h1>
       <button onClick={handleClick}>Events</button>
+      <Link href="/about">About</Link>
     </>
   );
 }
