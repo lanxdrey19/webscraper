@@ -16,24 +16,18 @@ function EventDetail({ post }) {
 export default EventDetail;
 
 export async function getStaticPaths() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await response.json();
+
+  const paths = data.map((post) => {
+    return {
+      params: {
+        eventId: `${post.id}`,
+      },
+    };
+  });
   return {
-    paths: [
-      {
-        params: {
-          eventId: "1",
-        },
-      },
-      {
-        params: {
-          eventId: "2",
-        },
-      },
-      {
-        params: {
-          eventId: "3",
-        },
-      },
-    ],
+    paths: paths,
     fallback: false,
   };
 }
